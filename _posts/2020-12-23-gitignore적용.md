@@ -2,7 +2,12 @@
 
 Created: Dec 23, 2020 8:38 PM
 
-# .gitignore 적용하기
+## 목차
+1. [gitignore이란?](#gitignore이란)
+2. [왜 gitignore을 사용하는가?](#왜-gitignore을-사용하는가)
+3. [.gitignore 파일 생성](#gitignore-파일-생성)
+4. [.gitignore 파일 적용](#gitignore-파일-적용)
+5. [간단히 .gitignore 파일 생성](#간단히-gitignore-파일-생성)
 
 ## gitignore이란?
 
@@ -15,7 +20,7 @@ Created: Dec 23, 2020 8:38 PM
 
 - 처음 프로젝트 생성후 생성한  git repository에 push를 하면 아래와 같이 push가 된다.
 
-![image1](./image/2020-12-23-gitignore적용/_2020-12-23__8.52.21.png)
+![image1](../assets/images/gitignore1.png)
 
 - 위의 push된 내용을 보면 알수 있듯이 원격 저장소에서는 **관리하지 않아도될 idea관련 파일이라든지 gradle 관련 파일들**이 함께 push된것을 확인할수 있다.
 - 이런 로컬 개발 환경에 종속적인 파일은 원격 저장소에서 관리될 필요가 없다.
@@ -38,7 +43,7 @@ Created: Dec 23, 2020 8:38 PM
 
 - example
 
-```shell script
+```
 # ignore all .class files
 *.class
 
@@ -63,21 +68,21 @@ bin/*.txt
 doc/**/*.pdf
 ```
 
-![image2](./image/2020-12-23-gitignore적용/_2020-12-23__9.09.25.png)
+![image2](../assets/images/gitignore2.png)
 
 ## .gitignore 파일 적용
 
 - 작성한 .gitignore을 commit하여 원격 저장소에 push한다.
 - push후 gitignore적용이 되지 않을경우 아래의 명령어를 통해 원격 저장소 파일을 제거후 다시 push한다.
 
-```bash
+```
 git rm -r --cached .
 git add. 
 git commit -m "커밋메세지"
 git push origin {브랜치명}
 ```
 
-![image2](./image/2020-12-23-gitignore적용/_2020-12-23__9.14.45.png)
+![image2](../assets/images/gitignore3.png)
 
 - 적용후 위와 같이 기존에 있던 불필요했던 파일 또는 디렉토리가 제거 된것을 확인할 수 있다.
 - 그리고 이후 추가되지 않아야되는 정보는 추가하여 실수로 잘못된 파일이 원격 저장소에 올라가는것을 방지 할수 있다.
@@ -87,174 +92,176 @@ git push origin {브랜치명}
 - [https://www.gitignore.io/](https://www.gitignore.io/)  를 이용하여 원하는 ignore 파일을 생성할수 있다.
 - 아래는 예로 gradle, intellij, java에 대한 ignore 파일을 생성하는 모습입니다.
 
-    ![image2](./image/2020-12-23-gitignore적용/_2020-12-23__9.20.57.png)
+    ![image2](../assets/images/gitignore4.png)
 
 - 위와 같이 gitignore에 추가될 정보를 추가하여 생성을 클릭하면 아래와 같이 파일이 생성된다.
 
-    ```bash
-    # Created by https://www.toptal.com/developers/gitignore/api/intellij,gradle,java
-    # Edit at https://www.toptal.com/developers/gitignore?templates=intellij,gradle,java
+<details markdown="1">
+<summary>생성파일</summary> 
 
-    ### Intellij ###
-    # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
-    # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+```
+# Created by https://www.toptal.com/developers/gitignore/api/intellij,gradle,java
+# Edit at https://www.toptal.com/developers/gitignore?templates=intellij,gradle,java
 
-    # User-specific stuff
-    .idea/**/workspace.xml
-    .idea/**/tasks.xml
-    .idea/**/usage.statistics.xml
-    .idea/**/dictionaries
-    .idea/**/shelf
+### Intellij ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
-    # Generated files
-    .idea/**/contentModel.xml
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
 
-    # Sensitive or high-churn files
-    .idea/**/dataSources/
-    .idea/**/dataSources.ids
-    .idea/**/dataSources.local.xml
-    .idea/**/sqlDataSources.xml
-    .idea/**/dynamic.xml
-    .idea/**/uiDesigner.xml
-    .idea/**/dbnavigator.xml
+# Generated files
+.idea/**/contentModel.xml
 
-    # Gradle
-    .idea/**/gradle.xml
-    .idea/**/libraries
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
 
-    # Gradle and Maven with auto-import
-    # When using Gradle or Maven with auto-import, you should exclude module files,
-    # since they will be recreated, and may cause churn.  Uncomment if using
-    # auto-import.
-    # .idea/artifacts
-    # .idea/compiler.xml
-    # .idea/jarRepositories.xml
-    # .idea/modules.xml
-    # .idea/*.iml
-    # .idea/modules
-    # *.iml
-    # *.ipr
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
 
-    # CMake
-    cmake-build-*/
+# Gradle and Maven with auto-import
+# When using Gradle or Maven with auto-import, you should exclude module files,
+# since they will be recreated, and may cause churn.  Uncomment if using
+# auto-import.
+# .idea/artifacts
+# .idea/compiler.xml
+# .idea/jarRepositories.xml
+# .idea/modules.xml
+# .idea/*.iml
+# .idea/modules
+# *.iml
+# *.ipr
 
-    # Mongo Explorer plugin
-    .idea/**/mongoSettings.xml
+# CMake
+cmake-build-*/
 
-    # File-based project format
-    *.iws
+# Mongo Explorer plugin
+.idea/**/mongoSettings.xml
 
-    # IntelliJ
-    out/
+# File-based project format
+*.iws
 
-    # mpeltonen/sbt-idea plugin
-    .idea_modules/
+# IntelliJ
+out/
 
-    # JIRA plugin
-    atlassian-ide-plugin.xml
+# mpeltonen/sbt-idea plugin
+.idea_modules/
 
-    # Cursive Clojure plugin
-    .idea/replstate.xml
+# JIRA plugin
+atlassian-ide-plugin.xml
 
-    # Crashlytics plugin (for Android Studio and IntelliJ)
-    com_crashlytics_export_strings.xml
-    crashlytics.properties
-    crashlytics-build.properties
-    fabric.properties
+# Cursive Clojure plugin
+.idea/replstate.xml
 
-    # Editor-based Rest Client
-    .idea/httpRequests
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
 
-    # Android studio 3.1+ serialized cache file
-    .idea/caches/build_file_checksums.ser
+# Editor-based Rest Client
+.idea/httpRequests
 
-    ### Intellij Patch ###
-    # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
+# Android studio 3.1+ serialized cache file
+.idea/caches/build_file_checksums.ser
 
-    # *.iml
-    # modules.xml
-    # .idea/misc.xml
-    # *.ipr
+### Intellij Patch ###
+# Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-    # Sonarlint plugin
-    # https://plugins.jetbrains.com/plugin/7973-sonarlint
-    .idea/**/sonarlint/
+# *.iml
+# modules.xml
+# .idea/misc.xml
+# *.ipr
 
-    # SonarQube Plugin
-    # https://plugins.jetbrains.com/plugin/7238-sonarqube-community-plugin
-    .idea/**/sonarIssues.xml
+# Sonarlint plugin
+# https://plugins.jetbrains.com/plugin/7973-sonarlint
+.idea/**/sonarlint/
 
-    # Markdown Navigator plugin
-    # https://plugins.jetbrains.com/plugin/7896-markdown-navigator-enhanced
-    .idea/**/markdown-navigator.xml
-    .idea/**/markdown-navigator-enh.xml
-    .idea/**/markdown-navigator/
+# SonarQube Plugin
+# https://plugins.jetbrains.com/plugin/7238-sonarqube-community-plugin
+.idea/**/sonarIssues.xml
 
-    # Cache file creation bug
-    # See https://youtrack.jetbrains.com/issue/JBR-2257
-    .idea/$CACHE_FILE$
+# Markdown Navigator plugin
+# https://plugins.jetbrains.com/plugin/7896-markdown-navigator-enhanced
+.idea/**/markdown-navigator.xml
+.idea/**/markdown-navigator-enh.xml
+.idea/**/markdown-navigator/
 
-    # CodeStream plugin
-    # https://plugins.jetbrains.com/plugin/12206-codestream
-    .idea/codestream.xml
+# Cache file creation bug
+# See https://youtrack.jetbrains.com/issue/JBR-2257
+.idea/$CACHE_FILE$
 
-    ### Java ###
-    # Compiled class file
-    *.class
+# CodeStream plugin
+# https://plugins.jetbrains.com/plugin/12206-codestream
+.idea/codestream.xml
 
-    # Log file
-    *.log
+### Java ###
+# Compiled class file
+*.class
 
-    # BlueJ files
-    *.ctxt
+# Log file
+*.log
 
-    # Mobile Tools for Java (J2ME)
-    .mtj.tmp/
+# BlueJ files
+*.ctxt
 
-    # Package Files #
-    *.jar
-    *.war
-    *.nar
-    *.ear
-    *.zip
-    *.tar.gz
-    *.rar
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
 
-    # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-    hs_err_pid*
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
 
-    ### Gradle ###
-    .gradle
-    build/
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
 
-    # Ignore Gradle GUI config
-    gradle-app.setting
+### Gradle ###
+.gradle
+build/
 
-    # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-    !gradle-wrapper.jar
+# Ignore Gradle GUI config
+gradle-app.setting
 
-    # Cache of project
-    .gradletasknamecache
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
 
-    # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-    # gradle/wrapper/gradle-wrapper.properties
+# Cache of project
+.gradletasknamecache
 
-    ### Gradle Patch ###
-    **/build/
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
 
-    # End of https://www.toptal.com/developers/gitignore/api/intellij,gradle,java
-    ```
+### Gradle Patch ###
+**/build/
+
+# End of https://www.toptal.com/developers/gitignore/api/intellij,gradle,java
+``` 
+
+</details>
+    
 
 - 프로젝트 생성 초반 간단하게 .gitignore 파일을 생성할때 활용하면 좋을듯 하다.
 
 ### 참고
 
 - [https://www.gitignore.io/](https://www.gitignore.io/)
-
 - [https://github.com/github/gitignore](https://github.com/github/gitignore)
-
 - [https://git-scm.com/docs/gitignore](https://git-scm.com/docs/gitignore)
-
 - [https://www.atlassian.com/git/tutorials/saving-changes/gitignore](https://www.atlassian.com/git/tutorials/saving-changes/gitignore)
-
 - [https://www.gloomycorner.com/tag/ignore/](https://www.gloomycorner.com/tag/ignore/)
